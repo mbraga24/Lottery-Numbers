@@ -7,20 +7,7 @@ class LotteryBall extends Component {
     let winningBalls = this.props.winningNumbers;
 
     return (
-      <div className="LotteryBall">
-         {
-          winningBalls.map(number => (
-            <div className="LotteryBall-balls">{number}</div>  
-          ))  
-         }
-      </div>
-      // <div>
-      //   {
-      //     winningBalls.map(number => (
-      //       <div className="LotteryBall-balls">{number}</div>  
-      //     ))  
-      //   }
-      // </div>
+      <div className="LotteryBall">{this.props.num}</div>  
     )
   }
 }

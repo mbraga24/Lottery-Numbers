@@ -1,15 +1,40 @@
 .Lottery {
-  width: 80%;
-  height: 50vh;
-  border: 2px solid black;
-  margin: 0 auto;
+  border: 2px solid lightseagreen;
+  padding: 1em 0 2em 0;
   text-align: center;
-  display: flex;
+  margin: 1em auto auto;
+  border-radius: 20px;
+  width: 40em;
+  box-shadow: 
+    -2px 2px 10px 0 #5c5a5a;
+}
+
+.Lottery-container {
+  display: flex; 
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin-bottom: 2em;
 }
 
 .Lottery button {
-  margin-top: 3em;
+  background: #3633f0;
+  color: #fff;
+  font-size: 1.5em;
+  border-radius: 20px;
+  padding: 0.40em;
+  border: 0px;
+  outline: none;
+  box-shadow:
+    inset -1px 2px 8px 0 #6866ee,
+    inset 1px -1px 8px 0 #060461;
+}
+
+.Lottery button:hover {
+  background: #5957e0;
+  color: #fff;
+}
+
+.Lottery button:active {
+  box-shadow: 
+    inset -1px 2px 6px 0 #060461,
+    inset 1px -1px 6px 0 #6866ee;
 }

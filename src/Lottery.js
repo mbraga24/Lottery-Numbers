@@ -3,47 +3,49 @@ import LotteryBall from "./LotteryBall";
 import "./Lottery.css";
 
 class Lottery extends Component {
-  // static defaultProps = {
-  //   defaultNumbers = []
-  // }
+  static defaultProps = {
+      title: "Lotto",
+      numBalls: 6,
+      maxNum: 40
+  };
+
   constructor(props) {
     super(props)
     this.state = {
-      num: []
+      num: Array.from({ length: this.props.numBalls })
     }
-
-    this.createBalls = this.createBalls.bind(this)
-    // this.generateNumbers = this.generateNumbers.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  generateNumbers(currentState) {
-    for (var i = 0; i < this.props.numBalls; i++) {
-      let newNumber = (Math.floor(Math.random() * this.props.maxNum) + 1)
-        currentState.num.push(newNumber) 
-    }
-    return currentState.num
+  // generateNumbers(currentState) {
+  //   return { currentState.num.map( n => Math.floor(Math.random() * this.props.maxNum) + 1 }
+  // }
+
+  generate() {
+    this.setState(currentState => ({
+      num: currentState.num.map( 
+        n => Math.floor(Math.random() * this.props.maxNum) + 1 
+      )
+    }));
   }
 
-  setToZero(currentState) {
-    return { num: currentState.num = [] } 
-  }
-
-  generateBalls(currentState) {
-    return { num: this.generateNumbers(currentState) }
-  }
-
-  createBalls() {
-    this.setState(this.setToZero)
-    this.setState(this.generateBalls)
+  handleClick() {
+    this.generate()
   }
 
   render() {
-    console.log(this.state.num)
+    
     return (
       <div className="Lottery">
         <h2>{this.props.title}</h2>
-        <LotteryBall winningNumbers={this.state.num}/>
-        <button onClick={this.createBalls}>Generate New Numbers</button>
+        <div className="Lottery-container">
+          {
+            this.state.num.map(number => (
+              <LotteryBall num={number}/>
+            ))
+          }
+        </div>
+        <button onClick={this.handleClick}>Generate New Numbers</button>
       </div>
     )
   }
